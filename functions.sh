@@ -320,6 +320,7 @@ install_core () {
   setefile
 
   echo 'export PATH=$(yarn global bin):$PATH' >> $HOME/.bashrc
+  export PATH=$(yarn global bin):$PATH > /dev/null 2>&1
 
 }
 
