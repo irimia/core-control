@@ -262,10 +262,14 @@ install_deps () {
   sudo npm install -g n > /dev/null 2>&1
   sudo n 14 > /dev/null 2>&1
   sudo npm install -g grunt-cli > /dev/null 2>&1
-  sudo npm install -g pm2@3 > /dev/null 2>&1
+  sudo npm install -g pm2 > /dev/null 2>&1
   sudo npm install -g yarn > /dev/null 2>&1
   sudo npm install -g lerna > /dev/null 2>&1
   pm2 install pm2-logrotate > /dev/null 2>&1
+
+  pm2 set pm2-logrotate:max_size 500M > /dev/null 2>&1
+  pm2 set pm2-logrotate:compress true > /dev/null 2>&1
+  pm2 set pm2-logrotate:retain 30 > /dev/null 2>&1
 
   local pm2startup="$(pm2 startup | tail -n1)"
   eval $pm2startup > /dev/null 2>&1
