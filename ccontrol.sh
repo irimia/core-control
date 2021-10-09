@@ -24,6 +24,12 @@ main () {
       exit 1
     fi
 
+    if ! command -v sudo &> /dev/null
+    then
+        echo "sudo could not be found."
+        exit 1
+    fi
+
     sysinfo
     sudo apt update > /dev/null 2>&1
     install_deps &
